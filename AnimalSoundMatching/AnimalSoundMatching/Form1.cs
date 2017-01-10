@@ -31,8 +31,6 @@ namespace AnimalSoundMatching
         public Form1()
         {
             InitializeComponent();
-            images = new List<string> { "cat.jpg", "dog.jpg", "goat.jpg", "rooster.jpg", "sheep.png"};
-            sounds = new List<string> { "cat.wav", "dog.wav", "goat.wav", "rooster.wav", "sheep.wav" };
             badges = new List<Bitmap> {Properties.Resources.excellent, Properties.Resources.good_work, Properties.Resources.great,
                                         Properties.Resources.super, Properties.Resources.well_done};
 
@@ -41,6 +39,8 @@ namespace AnimalSoundMatching
             t.Interval = 2000; //In milliseconds here
             t.AutoReset = false; //Stops it from repeating
             t.Elapsed += new ElapsedEventHandler(TimerElapsed);
+            images = new List<string> { "cat.jpg", "dog.jpg", "goat.jpg", "rooster.jpg", "sheep.png", "cow.jpg", "crow.jpg", "duck.jpg", "owl.jpg", "pig.jpg", "sealion.jpg", "horse.png" };
+            sounds = new List<string> { "cat.wav", "dog.wav", "goat.wav", "rooster.wav", "sheep.wav", "cow.wav", "crow.wav", "duck.wav", "owl.wav", "pig.wav", "sealion.wav", "horse.wav" };
 
         }
 
@@ -116,6 +116,26 @@ namespace AnimalSoundMatching
                     return Properties.Resources.rooster1;
                 case "sheep.wav":
                     return Properties.Resources.sheep1;
+                case "cow.wav":
+                    return Properties.Resources.cow1;
+                case "crow.wav":
+                    return Properties.Resources.crow1;
+                case "duck.wav":
+                    return Properties.Resources.duck1;
+                case "horse.wav":
+                    return Properties.Resources.horse1;
+                case "owl.wav":
+                    return Properties.Resources.owl1;
+                case "pig.wav":
+                    return Properties.Resources.pig1;
+                case "sealion.wav":
+                    return Properties.Resources.sealion1;
+
+
+
+
+
+
 
             }
             return null;
@@ -134,11 +154,32 @@ namespace AnimalSoundMatching
                 case "goat.jpg":
                     pb.Image = Properties.Resources.goat;
                     break;
-                case"rooster.jpg":
+                case "rooster.jpg":
                     pb.Image = Properties.Resources.rooster;
                     break;
-                case"sheep.png":
+                case "sheep.png":
                     pb.Image = Properties.Resources.sheep;
+                    break;
+                case "cow.jpg":
+                    pb.Image = Properties.Resources.cow;
+                    break;
+                case "crow.jpg":
+                    pb.Image = Properties.Resources.crow;
+                    break;
+                case "duck.jpg":
+                    pb.Image = Properties.Resources.duck;
+                    break;
+                case "horse.png":
+                    pb.Image = Properties.Resources.horse;
+                    break;
+                case "owl.jpg":
+                    pb.Image = Properties.Resources.owl;
+                    break;
+                case "pig.jpg":
+                    pb.Image = Properties.Resources.pig;
+                    break;
+                case "sealion.jpg":
+                    pb.Image = Properties.Resources.sealion;
                     break;
             }
             pb.Tag = soundName;
