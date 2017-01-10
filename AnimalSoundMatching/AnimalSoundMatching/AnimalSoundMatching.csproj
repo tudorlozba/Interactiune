@@ -123,6 +123,48 @@
   <ItemGroup>
     <None Include="Res\well_done.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\cow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\pig.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\owl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\crow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\horse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\duck.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\sealion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\sealion.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\duck.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\horse.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\crow.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\owl.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\pig.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\cow.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
