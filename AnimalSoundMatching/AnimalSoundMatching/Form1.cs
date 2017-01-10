@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+using System.Threading;
+using System.Timers;
 
 namespace AnimalSoundMatching
 {
@@ -17,12 +20,37 @@ namespace AnimalSoundMatching
         Random rnd = new Random();
         List<String> images;
         List<String> sounds;
+        private string mSoundName;
+        System.Timers.Timer t = new System.Timers.Timer();
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
+
+        Stopwatch stopwatch = new Stopwatch();
+        private List<Bitmap> badges;
+
         public Form1()
         {
             InitializeComponent();
             images = new List<string> { "cat.jpg", "dog.jpg", "goat.jpg", "rooster.jpg", "sheep.png"};
             sounds = new List<string> { "cat.wav", "dog.wav", "goat.wav", "rooster.wav", "sheep.wav" };
+            badges = new List<Bitmap> {Properties.Resources.excellent, Properties.Resources.good_work, Properties.Resources.great,
+                                        Properties.Resources.super, Properties.Resources.well_done};
 
+            startStopwatch();
+
+            t.Interval = 2000; //In milliseconds here
+            t.AutoReset = false; //Stops it from repeating
+            t.Elapsed += new ElapsedEventHandler(TimerElapsed);
+
+        }
+
+        void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("Hello, world!");
+            if (InvokeRequired)
+            {
+                Invoke(new MethodInvoker(nextLevel));
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,22 +60,46 @@ namespace AnimalSoundMatching
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<int> picturesIndex = new List<int>(3);
+            nextLevel();
+            button1.Visible = false;
+        }
 
-           picturesIndex.Add(rnd.Next(0, images.Count));
-           picturesIndex.Add(rnd.Next(0, images.Count));
-           picturesIndex.Add(rnd.Next(0, images.Count));
+        private void threadMethod()
+        {
+            while (true)
+            {
 
-           loadPictureInPictureBox(pictureBox1, images[picturesIndex[0]]);
-           loadPictureInPictureBox(pictureBox2, images[picturesIndex[1]]);
-           loadPictureInPictureBox(pictureBox3, images[picturesIndex[2]]);
+            }
+        }
 
-           int soundIndex = rnd.Next(0, 2);
+        private void nextLevel()
+        {
+            showPictures();
 
-           System.Media.SoundPlayer player = new System.Media.SoundPlayer(getSoundResource(sounds[picturesIndex[soundIndex]]));
-           player.Play();
+            List<Tuple<String, String>> animalMapping = new List<Tuple<string, string>>();
+            for (int i = 0; i < images.Count; i++)
+            {
+                animalMapping.Add(new Tuple<String, String>(images[i], sounds[i]));
+            }
 
+            List<Tuple<string, string>> picturesName = new List<Tuple<string, string>>(3);
 
+            for (int i = 0; i < 3; i++)
+            {
+                int index = rnd.Next(0, animalMapping.Count);
+                picturesName.Add(animalMapping[index]);
+                animalMapping.RemoveAt(index);
+            }
+
+            loadPictureInPictureBox(pictureBox1, picturesName[0].Item1, picturesName[0].Item2);
+            loadPictureInPictureBox(pictureBox2, picturesName[1].Item1, picturesName[1].Item2);
+            loadPictureInPictureBox(pictureBox3, picturesName[2].Item1, picturesName[2].Item2);
+
+            int soundIndex = rnd.Next(0, 2);
+
+            mSoundName = picturesName[soundIndex].Item2;
+            player.Stream = getSoundResource(picturesName[soundIndex].Item2);
+            player.Play();
         }
 
         private Stream getSoundResource(string p)
@@ -69,7 +121,7 @@ namespace AnimalSoundMatching
             return null;
         }
 
-        private void loadPictureInPictureBox(PictureBox pb, String imageName)
+        private void loadPictureInPictureBox(PictureBox pb, String imageName, String soundName)
         {
             switch (imageName)
             {
@@ -89,7 +141,99 @@ namespace AnimalSoundMatching
                     pb.Image = Properties.Resources.sheep;
                     break;
             }
-       
+            pb.Tag = soundName;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Tag == mSoundName)
+            {
+                showSuccess();
+            }
+            else
+            {
+                tryAgain();
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (pictureBox2.Tag == mSoundName)
+            {
+                showSuccess();
+            }
+            else
+            {
+                tryAgain();
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (pictureBox3.Tag == mSoundName)
+            {
+                showSuccess();
+            }
+            else
+            {
+                tryAgain();
+            }
+        }
+
+        private void tryAgain()
+        {
+            System.Console.Out.WriteLine("try again");
+        }
+
+        private void showSuccess()
+        {
+            showBadge();
+
+            t.Start();
+
+        }
+
+        private void showBadge()
+        {
+            hidePictures();
+            int index = rnd.Next(0, badges.Count);
+            pictureBox4.Image = badges[index];
+            pictureBox4.Visible = true;
+
+        }
+
+        private void hidePictures()
+        {
+            pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
+        }
+
+        private void showPictures()
+        {
+            pictureBox4.Visible = false;
+            pictureBox1.Visible = true;
+            pictureBox2.Visible = true;
+            pictureBox3.Visible = true;
+        }
+
+        private void startStopwatch()
+        {
+            stopwatch.Start();
+        }
+
+        private string stopStopwatch()
+        {
+            // Stop.
+            stopwatch.Stop();
+            // Write hours, minutes and seconds.
+            return String.Format("Time elapsed: {0:hh\\:mm\\:ss}", stopwatch.Elapsed);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //play sound again
+            player.Play();
         }
     }
 }
