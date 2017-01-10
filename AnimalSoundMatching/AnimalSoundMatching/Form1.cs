@@ -27,6 +27,7 @@ namespace AnimalSoundMatching
 
         Stopwatch stopwatch = new Stopwatch();
         private List<Bitmap> badges;
+        private int levelCount = 0;
 
         public Form1()
         {
@@ -74,32 +75,49 @@ namespace AnimalSoundMatching
 
         private void nextLevel()
         {
-            showPictures();
-
-            List<Tuple<String, String>> animalMapping = new List<Tuple<string, string>>();
-            for (int i = 0; i < images.Count; i++)
+            if (levelCount < 10)
             {
-                animalMapping.Add(new Tuple<String, String>(images[i], sounds[i]));
+                showPictures();
+
+                List<Tuple<String, String>> animalMapping = new List<Tuple<string, string>>();
+                for (int i = 0; i < images.Count; i++)
+                {
+                    animalMapping.Add(new Tuple<String, String>(images[i], sounds[i]));
+                }
+
+                List<Tuple<string, string>> picturesName = new List<Tuple<string, string>>(3);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    int index = rnd.Next(0, animalMapping.Count);
+                    picturesName.Add(animalMapping[index]);
+                    animalMapping.RemoveAt(index);
+                }
+
+                loadPictureInPictureBox(pictureBox1, picturesName[0].Item1, picturesName[0].Item2);
+                loadPictureInPictureBox(pictureBox2, picturesName[1].Item1, picturesName[1].Item2);
+                loadPictureInPictureBox(pictureBox3, picturesName[2].Item1, picturesName[2].Item2);
+
+                int soundIndex = rnd.Next(0, 2);
+
+                mSoundName = picturesName[soundIndex].Item2;
+                player.Stream = getSoundResource(picturesName[soundIndex].Item2);
+                player.Play();
             }
-
-            List<Tuple<string, string>> picturesName = new List<Tuple<string, string>>(3);
-
-            for (int i = 0; i < 3; i++)
+            else
             {
-                int index = rnd.Next(0, animalMapping.Count);
-                picturesName.Add(animalMapping[index]);
-                animalMapping.RemoveAt(index);
+                finishGame();
             }
+        }
 
-            loadPictureInPictureBox(pictureBox1, picturesName[0].Item1, picturesName[0].Item2);
-            loadPictureInPictureBox(pictureBox2, picturesName[1].Item1, picturesName[1].Item2);
-            loadPictureInPictureBox(pictureBox3, picturesName[2].Item1, picturesName[2].Item2);
+        private void finishGame()
+        {
+            string time = stopStopwatch();
+            var form2 = new Form2();
+            form2.timeElapsed = time;
+            form2.Show();
+            this.Close();
 
-            int soundIndex = rnd.Next(0, 2);
-
-            mSoundName = picturesName[soundIndex].Item2;
-            player.Stream = getSoundResource(picturesName[soundIndex].Item2);
-            player.Play();
         }
 
         private Stream getSoundResource(string p)
@@ -229,7 +247,7 @@ namespace AnimalSoundMatching
         private void showSuccess()
         {
             showBadge();
-
+            levelCount++;
             t.Start();
 
         }
@@ -268,7 +286,7 @@ namespace AnimalSoundMatching
             // Stop.
             stopwatch.Stop();
             // Write hours, minutes and seconds.
-            return String.Format("Time elapsed: {0:hh\\:mm\\:ss}", stopwatch.Elapsed);
+            return String.Format("{0:hh\\:mm\\:ss}", stopwatch.Elapsed);
         }
 
         private void button2_Click(object sender, EventArgs e)
