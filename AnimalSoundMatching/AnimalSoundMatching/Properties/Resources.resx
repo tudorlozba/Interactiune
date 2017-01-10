@@ -130,11 +130,20 @@
   <data name="dog1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Res\dog.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="excellent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\excellent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="goat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Res\goat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="goat1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Res\goat.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="good_work" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\good_work.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="great" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\great.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rooster" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Res\rooster.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,5 +156,11 @@
   </data>
   <data name="sheep1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Res\sheep.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="super" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\super.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="well_done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\well_done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

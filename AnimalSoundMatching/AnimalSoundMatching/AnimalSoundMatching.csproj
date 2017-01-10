@@ -108,6 +108,21 @@
   <ItemGroup>
     <None Include="Res\sheep.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\excellent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\good_work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\great.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\super.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\well_done.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
