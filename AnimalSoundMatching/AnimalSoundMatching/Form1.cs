@@ -22,6 +22,8 @@ namespace AnimalSoundMatching
         List<String> sounds;
         private string mSoundName;
         System.Timers.Timer t = new System.Timers.Timer();
+        System.Timers.Timer wrongBannerTimer = new System.Timers.Timer();
+
         System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
 
@@ -31,6 +33,7 @@ namespace AnimalSoundMatching
 
         public Form1()
         {
+         
             InitializeComponent();
             badges = new List<Bitmap> {Properties.Resources.excellent, Properties.Resources.good_work, Properties.Resources.great,
                                         Properties.Resources.super, Properties.Resources.well_done};
@@ -40,6 +43,11 @@ namespace AnimalSoundMatching
             t.Interval = 2000; //In milliseconds here
             t.AutoReset = false; //Stops it from repeating
             t.Elapsed += new ElapsedEventHandler(TimerElapsed);
+
+            wrongBannerTimer.Interval = 1000;
+            wrongBannerTimer.AutoReset = false;
+            wrongBannerTimer.Elapsed += new ElapsedEventHandler(TimerElapsed2);
+
             images = new List<string> { "cat.jpg", "dog.jpg", "goat.jpg", "rooster.jpg", "sheep.png", "cow.jpg", "crow.jpg", "duck.jpg", "owl.jpg", "pig.jpg", "sealion.jpg", "horse.png" };
             sounds = new List<string> { "cat.wav", "dog.wav", "goat.wav", "rooster.wav", "sheep.wav", "cow.wav", "crow.wav", "duck.wav", "owl.wav", "pig.wav", "sealion.wav", "horse.wav" };
 
@@ -52,6 +60,20 @@ namespace AnimalSoundMatching
             {
                 Invoke(new MethodInvoker(nextLevel));
             }
+        }
+
+        void TimerElapsed2(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("Hello, world!");
+            if (InvokeRequired)
+            {
+                Invoke(new MethodInvoker(hideWrongBanner));
+            }
+        }
+
+        private void hideWrongBanner()
+        {
+            pictureBox5.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -116,6 +138,7 @@ namespace AnimalSoundMatching
             var form2 = new Form2();
             form2.timeElapsed = time;
             form2.Show();
+            form2.BringToFront();
             this.Close();
 
         }
@@ -148,12 +171,6 @@ namespace AnimalSoundMatching
                     return Properties.Resources.pig1;
                 case "sealion.wav":
                     return Properties.Resources.sealion1;
-
-
-
-
-
-
 
             }
             return null;
@@ -241,7 +258,9 @@ namespace AnimalSoundMatching
 
         private void tryAgain()
         {
-            System.Console.Out.WriteLine("try again");
+            //System.Console.Out.WriteLine("try again");
+            pictureBox5.Visible = true;
+            wrongBannerTimer.Start();
         }
 
         private void showSuccess()
@@ -258,6 +277,7 @@ namespace AnimalSoundMatching
             int index = rnd.Next(0, badges.Count);
             pictureBox4.Image = badges[index];
             pictureBox4.Visible = true;
+            button2.Visible = false;
 
         }
 
@@ -274,6 +294,7 @@ namespace AnimalSoundMatching
             pictureBox1.Visible = true;
             pictureBox2.Visible = true;
             pictureBox3.Visible = true;
+            button2.Visible = true;
         }
 
         private void startStopwatch()

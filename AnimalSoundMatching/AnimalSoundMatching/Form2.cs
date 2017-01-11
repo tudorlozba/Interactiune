@@ -44,7 +44,7 @@ namespace AnimalSoundMatching
             using (FileStream fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
             using (StreamWriter sw = new StreamWriter(fs))
             {
-                sw.WriteLine((String)textBox1.Text + ";" + timeElapsed);
+               sw.WriteLine((String)textBox1.Text + ";" + timeElapsed);
             }
 
             dataGridView1.Visible = true;
@@ -53,19 +53,33 @@ namespace AnimalSoundMatching
 
             dt.Columns.Add("Name");
             dt.Columns.Add("Time");
+           
+
+            List<Tuple<string, string>> list = new List<Tuple<string, string>>();
 
 
             foreach (var line in lines)
             {
-                var splited = line.Split(';');
-                DataRow dr = dt.NewRow();
-                dr[0] = splited[0];
-                dr[1] = splited[1];
+                if (line.Length > 1){
+                    var splited = line.Split(';');
+                    list.Add(new Tuple<string, string>(splited[0], splited[1]));
+                }
+            }
 
-                dt.Rows.Add(dr);
+            list.Sort((x, y) => y.Item2.CompareTo(x.Item2));
+            list.Reverse();
+
+
+            foreach(var elem in list){
+                 DataRow dr = dt.NewRow();
+                 dr[0] = elem.Item1;
+                 dr[1] = elem.Item2;
+                 dt.Rows.Add(dr);
             }
 
             dataGridView1.DataSource = dt;
+
+
         }
     }
 }
