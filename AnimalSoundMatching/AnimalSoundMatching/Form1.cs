@@ -50,7 +50,6 @@ namespace AnimalSoundMatching
 
             images = new List<string> { "cat.jpg", "dog.jpg", "goat.jpg", "rooster.jpg", "sheep.png", "cow.jpg", "crow.jpg", "duck.jpg", "owl.jpg", "pig.jpg", "sealion.jpg", "horse.png" };
             sounds = new List<string> { "cat.wav", "dog.wav", "goat.wav", "rooster.wav", "sheep.wav", "cow.wav", "crow.wav", "duck.wav", "owl.wav", "pig.wav", "sealion.wav", "horse.wav" };
-
         }
 
         void TimerElapsed(object sender, ElapsedEventArgs e)
@@ -84,16 +83,11 @@ namespace AnimalSoundMatching
         private void button1_Click(object sender, EventArgs e)
         {
             nextLevel();
+            this.BackgroundImage = null;
             button1.Visible = false;
         }
 
-        private void threadMethod()
-        {
-            while (true)
-            {
-
-            }
-        }
+       
 
         private void nextLevel()
         {
@@ -260,6 +254,7 @@ namespace AnimalSoundMatching
         {
             //System.Console.Out.WriteLine("try again");
             pictureBox5.Visible = true;
+            pictureBox5.BringToFront();
             wrongBannerTimer.Start();
         }
 
@@ -268,6 +263,7 @@ namespace AnimalSoundMatching
             showBadge();
             levelCount++;
             t.Start();
+            player.Stop();
 
         }
 
@@ -314,6 +310,12 @@ namespace AnimalSoundMatching
         {
             //play sound again
             player.Play();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            nextLevel();
+            this.BackgroundImage = null;
         }
     }
 }

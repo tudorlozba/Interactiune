@@ -186,6 +186,33 @@
   <ItemGroup>
     <None Include="Res\wrong.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\wallpaper-of-the-day-interlocking-animals-common-sense-evaluation.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\startGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\leaderboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\play.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\play2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\playsound.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

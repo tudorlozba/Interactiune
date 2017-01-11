@@ -47,12 +47,16 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(306, 364);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Image = global::AnimalSoundMatching.Properties.Resources.play2;
+            this.button1.Location = new System.Drawing.Point(269, 226);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(161, 161);
             this.button1.TabIndex = 0;
             this.button1.Text = "Start game";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
@@ -63,6 +67,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -73,6 +78,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -83,12 +89,13 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::AnimalSoundMatching.Properties.Resources.good_work;
-            this.pictureBox4.Location = new System.Drawing.Point(227, 82);
+            this.pictureBox4.Location = new System.Drawing.Point(218, 53);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(231, 231);
             this.pictureBox4.TabIndex = 4;
@@ -97,18 +104,21 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 364);
+            this.button2.Image = global::AnimalSoundMatching.Properties.Resources.playsound;
+            this.button2.Location = new System.Drawing.Point(12, 324);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 23);
+            this.button2.Size = new System.Drawing.Size(108, 63);
             this.button2.TabIndex = 5;
             this.button2.Text = "Play sound again";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::AnimalSoundMatching.Properties.Resources.wrong;
-            this.pictureBox5.Location = new System.Drawing.Point(221, 63);
+            this.pictureBox5.Location = new System.Drawing.Point(218, 39);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(250, 250);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -121,6 +131,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::AnimalSoundMatching.Properties.Resources.wallpaper_of_the_day_interlocking_animals_common_sense_evaluation;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(689, 399);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.button2);
